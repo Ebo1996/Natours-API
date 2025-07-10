@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs');
 
 const port = 3000;
 
@@ -9,6 +10,15 @@ const app = express();
 // })
 // app.post('/', (req, res) => {
 //   res.send('you can post to this endpoint too');
+const tours = JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`));
 // })
+app.get('/api/v1/tours', (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    data: {
+      tours
+    }
+  });
+});
 
 app.listen(port, '127.0.0.1', () => { }); 
