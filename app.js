@@ -26,12 +26,8 @@ app.get('/api/v1/tours', (req, res) => {
 
 app.post('/api/v1/tours', (req, res) => {
   console.log(req.body);
-  res.status(201).json({
-    status: 'success',
-    data: req.body
-  });
+  res.send('done')
 });
-
 app.listen(port, '127.0.0.1', () => {
   console.log(`Server running on http://127.0.0.1:${port}`);
 });
