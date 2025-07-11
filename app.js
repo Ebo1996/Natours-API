@@ -5,6 +5,7 @@ const port = 3000;
 
 const app = express();
 
+app.use(express.json());
 // app.get('/', (req, res) => {
 //   res.status(200).json({ message: 'hello from server side', app: 'Natours' })
 // });
@@ -23,4 +24,8 @@ app.get('/api/v1/tours', (req, res) => {
   });
 });
 
+app.post('/api/v1/tours', (req, res) => {
+  console.log(req.body);
+  res.send('done')
+});
 app.listen(port, '127.0.0.1', () => { }); 
