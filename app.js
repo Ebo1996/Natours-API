@@ -37,7 +37,7 @@ app.post('/api/v1/tours', (req, res) => {
       }
     });
   });
-  res.send('Done');
+
 });
 
 app.listen(port, '127.0.0.1', () => {
