@@ -26,13 +26,15 @@ app.get('/api/v1/tours', (req, res) => {
   });
 });
 
-app.get('/api/v1/tours:id', (req, res) => {
+app.get('/api/v1/tours/:id', (req, res) => {
+  console.log(req.params);
+  const id = req.params.id * 1; // convert string to number
+  const tour = tours.find((el) => el.id === id);
   res.status(200).json({
     status: 'success',
-    // results: tours.length,
-    // data: {
-    //   tours,
-    // },
+    data: {
+      tours: tour,
+    }
   });
 });
 
