@@ -42,9 +42,8 @@ app.get('/api/v1/tours/:id', (req, res) => {
     data: {
       tours: tour,
     }
-
   });
+});
 app.listen(8000, () => {
-
   console.log('Server is running on port 8000');
 });
