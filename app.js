@@ -36,6 +36,13 @@ app.get('/api/v1/tours/:id', (req, res) => {
       tours: tour,
     }
   });
+  if (!tour) {
+    return res.status(404).json({
+      status: 'fail',
+      message: 'Invalid ID',
+    });
+  }
+
 });
 
 app.post('/api/v1/tours', (req, res) => {
