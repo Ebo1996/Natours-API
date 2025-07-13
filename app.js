@@ -77,6 +77,22 @@ app.post('/api/v1/tours', (req, res) => {
     }
   );
 });
+app.patch('/api/v1/tours/:id', (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    data: {
+      tour: '<Updated tour here...>',
+    }
+  });
+  if (req.params.id * 1 > tours.length) {
+    return res.status(404).json({
+      status: 'fail',
+      message: 'Invalid ID',
+    });
+  }
+
+});
+
 
 app.listen(port, '127.0.0.1', () => {
   console.log(`Server running on http://127.0.0.1:${port}`);
