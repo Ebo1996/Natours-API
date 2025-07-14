@@ -71,13 +71,7 @@ const deleteTour = (req, res) => {
     data: null,
   });
 }
-
-app.get('/api/v1/tours', getAllTours);
-app.get('/api/v1/tours/:id', getTour);
-app.post('/api/v1/tours', createTour);
-
-app.delete('/api/v1/tours/:id', deleteTour);
-app.patch('/api/v1/tours/:id', (req, res) => {
+const updateTour = (req, res) => {
   if (req.params.id * 1 > tours.length) {
     return res.status(404).json({
       status: 'fail',
@@ -88,7 +82,13 @@ app.patch('/api/v1/tours/:id', (req, res) => {
     status: 'success',
     data: null,
   });
-});
+}
+
+app.get('/api/v1/tours', getAllTours);
+app.get('/api/v1/tours/:id', getTour);
+app.post('/api/v1/tours', createTour);
+app.delete('/api/v1/tours/:id', deleteTour);
+app.patch('/api/v1/tours/:id', updateTour);
 
 app.listen(port, '127.0.0.1', () => {
   console.log(`Server running on http://127.0.0.1:${port}`);
