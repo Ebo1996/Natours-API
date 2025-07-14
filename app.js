@@ -16,12 +16,7 @@ const getAllTours = (req, res) => {
   });
 }
 
-const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
-);
-app.get('/api/v1/tours');
-
-app.get('/api/v1/tours/:id', (req, res) => {
+const getTour = (req, res) => {
   console.log(req.params);
   const id = req.params.id * 1; // convert string to number
   const tour = tours.find((el) => el.id === id);
@@ -38,7 +33,14 @@ app.get('/api/v1/tours/:id', (req, res) => {
     });
   }
 
-});
+}
+
+const tours = JSON.parse(
+  fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
+);
+app.get('/api/v1/tours', getAllTours);
+
+app.get('/api/v1/tours/:id',);
 
 
 app.get('/api/v1/tours/:id', (req, res) => {
