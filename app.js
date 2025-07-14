@@ -1,11 +1,11 @@
 const express = require('express');
 const fs = require('fs');
-
 const port = 3000;
-
 const app = express();
-
 app.use(express.json());
+const tours = JSON.parse(
+  fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
+);
 //get alll tours
 const getAllTours = (req, res) => {
   res.status(200).json({
@@ -59,7 +59,7 @@ const createTour = (req, res) => {
     }
   );
 };
-const updateTour = (req, res) => {
+const deleteTour = (req, res) => {
   if (req.params.id * 1 > tours.length) {
     return res.status(404).json({
       status: 'fail',
@@ -71,14 +71,12 @@ const updateTour = (req, res) => {
     data: null,
   });
 }
-const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
-);
+
 app.get('/api/v1/tours', getAllTours);
 app.get('/api/v1/tours/:id', getTour);
-app.post('/api/v1/tours', createTOur);
+app.post('/api/v1/tours', createTour);
 
-app.delete('/api/v1/tours/:id', updateTour);
+app.delete('/api/v1/tours/:id', deleteTour);
 app.patch('/api/v1/tours/:id', (req, res) => {
   if (req.params.id * 1 > tours.length) {
     return res.status(404).json({
