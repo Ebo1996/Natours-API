@@ -83,13 +83,21 @@ const updateTour = (req, res) => {
     data: null,
   });
 }
+// app.get('/api/v1/tours', getAllTours);
+// app.post('/api/v1/tours', createTour);
+// app.get('/api/v1/tours/:id', getTour);
+// app.delete('/api/v1/tours/:id', deleteTour);
+// app.patch('/api/v1/tours/:id', updateTour);
 
-app.get('/api/v1/tours', getAllTours);
-app.get('/api/v1/tours/:id', getTour);
-app.post('/api/v1/tours', createTour);
-app.delete('/api/v1/tours/:id', deleteTour);
-app.patch('/api/v1/tours/:id', updateTour);
-
+app
+  .route('/api/v1/tours')
+  .get(getAllTours)
+  .post(createTour);
+app
+  .route('/api/v1/tours/:id')
+  .get(getTour)
+  .patch(updateTour)
+  .delete(deleteTour);
 app.listen(port, '127.0.0.1', () => {
   console.log(`Server running on http://127.0.0.1:${port}`);
 });
