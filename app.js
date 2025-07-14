@@ -1,6 +1,5 @@
 const express = require('express');
 const fs = require('fs');
-const port = 3000;
 const app = express();
 app.use(express.json());
 const tours = JSON.parse(
@@ -21,18 +20,18 @@ const getTour = (req, res) => {
   console.log(req.params);
   const id = req.params.id * 1; // convert string to number
   const tour = tours.find((el) => el.id === id);
-  res.status(200).json({
-    status: 'success',
-    data: {
-      tours: tour,
-    },
-  });
   if (!tour) {
     return res.status(404).json({
       status: 'fail',
       message: 'Invalid ID',
     });
   }
+  res.status(200).json({
+    status: 'success',
+    data: {
+      tours: tour,
+    },
+  });
 };
 //create  a tour
 const createTour = (req, res) => {
@@ -98,6 +97,8 @@ app
   .get(getTour)
   .patch(updateTour)
   .delete(deleteTour);
+
+const port = 3000;
 app.listen(port, '127.0.0.1', () => {
   console.log(`Server running on http://127.0.0.1:${port}`);
 });
