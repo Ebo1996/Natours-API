@@ -6,6 +6,7 @@ const port = 3000;
 const app = express();
 
 app.use(express.json());
+//get alll tours
 const getAllTours = (req, res) => {
   res.status(200).json({
     status: 'success',
@@ -15,6 +16,8 @@ const getAllTours = (req, res) => {
     },
   });
 }
+
+//get a tour
 
 const getTour = (req, res) => {
   console.log(req.params);
@@ -35,22 +38,9 @@ const getTour = (req, res) => {
 
 }
 
-const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
-);
-app.get('/api/v1/tours', getAllTours);
+//create  a tour
 
-app.get('/api/v1/tours/:id',);
-
-
-app.get('/api/v1/tours/:id', (req, res) => {
-
-
-
-});
-
-
-app.post('/api/v1/tours', (req, res) => {
+const createTour = (req, res) => {
   //
   const newId = tours[tours.length - 1].id + 1;
   const newTour = Object.assign({ id: newId }, req.body);
@@ -73,7 +63,13 @@ app.post('/api/v1/tours', (req, res) => {
       });
     }
   );
-});
+}
+const tours = JSON.parse(
+  fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
+);
+app.get('/api/v1/tours', getAllTours);
+app.get('/api/v1/tours/:id', getTour);
+app.post('/api/v1/tours', createTOur);
 app.delete('/api/v1/tours/:id', (req, res) => {
   if (req.params.id * 1 > tours.length) {
     return res.status(404).json({
