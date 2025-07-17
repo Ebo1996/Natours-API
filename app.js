@@ -4,6 +4,11 @@ const app = express();
 
 app.use(express.json());
 
+
+app.use((req, res, next) => {
+  console.log('Hello from the middleware!');
+  next(); // Call next() to pass control to the next middleware or route handler
+});
 const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
 );
