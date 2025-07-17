@@ -6,15 +6,15 @@ app.use(express.json());
 
 
 app.use((req, res, next) => {
-  console.log('Hello from the middleware!');
-  next(); // Call next() to pass control to the next middleware or route handler
+  console.log('Hello from the middleware 👋');
+  next();
 });
 const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
 );
 
 // Get all tours
-const getAllTours = (req, res) => {
+const getAllTours = (req, res) => { 
   res.status(200).json({
     status: 'success',
     results: tours.length,
