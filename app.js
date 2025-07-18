@@ -3,6 +3,8 @@ const fs = require('fs');
 const app = express();
 const morgan = require('morgan');
 //1)MIDDLEWARE
+app.use(morgan('dev'));
+
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -19,7 +21,7 @@ const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
 );
 
-//2)ROUTE HANDLER 
+//2)ROUTE HANDLER
 
 // Get all tours
 const getAllTours = (req, res) => { 
@@ -120,6 +122,13 @@ app
   .patch(updateTour)
   .delete(deleteTour);
 
+app.route('/api/v1/tours/:id')
+  .get(getAllUsers)
+  .post(createUser)
+app.route('/api/v1/tours/:id')
+  .get(getUser)
+  .patch(updateUser)
+  .delete(deleteUser);
 //4)START SERVER
 const port = 3000;
 app.listen(port, '127.0.0.1', () => {
