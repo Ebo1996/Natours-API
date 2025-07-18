@@ -109,6 +109,7 @@ const updateTour = (req, res) => {
     data: null,
   });
 };
+const getAllUsers    
 
 // 3)Routes
 app
