@@ -110,7 +110,6 @@ const updateTour = (req, res) => {
   });
 };
 const getAllUsers    
-
 // 3)Routes
 app
   .route('/api/v1/tours')
