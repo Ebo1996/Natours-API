@@ -156,7 +156,7 @@ app
   .delete(deleteTour);
 
 app
-  .route('/api/v1/users/:id')
+  .route('/api/v1/users')
   .get(getAllUsers)
   .post(createUser);
 
