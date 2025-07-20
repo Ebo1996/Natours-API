@@ -122,7 +122,7 @@ const createUser = (req, res) => {
   });
 };
 
-const getUsers = (req, res) => {
+const getUser = (req, res) => {
   res.status(500).json({
     status: 'error',
     message: 'the route is not yet defined',
@@ -162,7 +162,7 @@ app
 
 app
   .route('/api/v1/users/:id')
-  .get(getUsers)
+  .get(getUser)
   .patch(updateUser)
   .delete(deleteUser);
 
