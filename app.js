@@ -156,12 +156,12 @@ app
   .delete(deleteTour);
 
 app
-  .route('/api/v1/tours/:id')
+  .route('/api/v1/users/:id')
   .get(getAllUsers)
   .post(createUser);
 
 app
-  .route('/api/v1/tours/:id')
+  .route('/api/v1/users/:id')
   .get(getUsers)
   .patch(updateUser)
   .delete(deleteUser);
