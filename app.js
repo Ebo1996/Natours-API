@@ -114,7 +114,31 @@ const getAllUsers = (req, res) => {
     status: 'error',
     message: 'the route is not yet defined'
   });
-};  
+};
+const createUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'the route is not yet defined'
+  });
+};
+const getUsers = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'the route is not yet defined'
+  });
+};
+const updateUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'the route is not yet defined'
+  });
+};
+const deleteUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'the route is not yet defined'
+  });
+};
 // 3)Routes
 app
   .route('/api/v1/tours')
