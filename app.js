@@ -110,11 +110,11 @@ const updateTour = (req, res) => {
   });
 };
 const getAllUsers = (req, res) => {
-  res.status(200).json({
-    status: 'success',
-    data: null
+  res.status(500).json({
+    status: 'error',
+    message: 'the route is not yet defined'
   });
-};
+};  
 // 3)Routes
 app
   .route('/api/v1/tours')
