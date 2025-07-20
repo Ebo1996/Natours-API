@@ -2,9 +2,9 @@ const express = require('express');
 const fs = require('fs');
 const app = express();
 const morgan = require('morgan');
-//1)MIDDLEWARE
-app.use(morgan('dev'));
 
+// 1) MIDDLEWARE
+app.use(morgan('dev'));
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -14,18 +14,18 @@ app.use((req, res, next) => {
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
-
   next();
 });
+
 const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
 );
 
-//2)ROUTE HANDLER
+// 2) ROUTE HANDLER
 
 // Get all tours
-const getAllTours = (req, res) => { 
-  console.log(req.requestTime)
+const getAllTours = (req, res) => {
+  console.log(req.requestTime);
   res.status(200).json({
     status: 'success',
     requestedAt: req.requestTime,
@@ -39,7 +39,7 @@ const getAllTours = (req, res) => {
 // Get a tour
 const getTour = (req, res) => {
   console.log(req.params);
-  const id = req.params.id * 1; // convert string to number
+  const id = req.params.id * 1;
   const tour = tours.find((el) => el.id === id);
 
   if (!tour) {
@@ -63,11 +63,6 @@ const createTour = (req, res) => {
   const newTour = Object.assign({ id: newId }, req.body);
   tours.push(newTour);
 
-  /*
-    (path, data, callback)
-    ✔ JSON.stringify(tours) ➔ becomes a JSON string.
-    ✔ fs.writeFile(...) ➔ writes that string into the file on disk at the given path.
-  */
   fs.writeFile(
     `${__dirname}/dev-data/data/tours-simple.json`,
     JSON.stringify(tours),
@@ -82,6 +77,7 @@ const createTour = (req, res) => {
   );
 };
 
+// Delete a tour
 const deleteTour = (req, res) => {
   if (req.params.id * 1 > tours.length) {
     return res.status(404).json({
@@ -96,6 +92,7 @@ const deleteTour = (req, res) => {
   });
 };
 
+// Update a tour
 const updateTour = (req, res) => {
   if (req.params.id * 1 > tours.length) {
     return res.status(404).json({
@@ -109,37 +106,44 @@ const updateTour = (req, res) => {
     data: null,
   });
 };
+
+// User route handlers (placeholders)
 const getAllUsers = (req, res) => {
   res.status(500).json({
     status: 'error',
-    message: 'the route is not yet defined'
+    message: 'the route is not yet defined',
   });
 };
+
 const createUser = (req, res) => {
   res.status(500).json({
     status: 'error',
-    message: 'the route is not yet defined'
+    message: 'the route is not yet defined',
   });
 };
+
 const getUsers = (req, res) => {
   res.status(500).json({
     status: 'error',
-    message: 'the route is not yet defined'
+    message: 'the route is not yet defined',
   });
 };
+
 const updateUser = (req, res) => {
   res.status(500).json({
     status: 'error',
-    message: 'the route is not yet defined'
+    message: 'the route is not yet defined',
   });
 };
+
 const deleteUser = (req, res) => {
   res.status(500).json({
     status: 'error',
-    message: 'the route is not yet defined'
+    message: 'the route is not yet defined',
   });
 };
-// 3)Routes
+
+// 3) ROUTES
 app
   .route('/api/v1/tours')
   .get(getAllTours)
@@ -151,17 +155,19 @@ app
   .patch(updateTour)
   .delete(deleteTour);
 
-app.route('/api/v1/tours/:id')
+app
+  .route('/api/v1/tours/:id')
   .get(getAllUsers)
-  .post(createUser)
-app.route('/api/v1/tours/:id')
-  .get(getUser)
+  .post(createUser);
+
+app
+  .route('/api/v1/tours/:id')
+  .get(getUsers)
   .patch(updateUser)
   .delete(deleteUser);
-//4)START SERVER
+
+// 4) START SERVER
 const port = 3000;
 app.listen(port, '127.0.0.1', () => {
   console.log(`Server running on http://127.0.0.1:${port}`);
 });
-
-
