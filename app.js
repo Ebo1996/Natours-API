@@ -109,7 +109,12 @@ const updateTour = (req, res) => {
     data: null,
   });
 };
-const getAllUsers    
+const getAllUsers = (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    data: null
+  });
+};
 // 3)Routes
 app
   .route('/api/v1/tours')
