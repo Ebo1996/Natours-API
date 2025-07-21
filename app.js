@@ -148,16 +148,6 @@ const tourRouter = express.Router();
 const userRouter = express.Router();
 app.use('/api/v1/tours', tourRouter);
 
-tourRouter
-  .route('/')
-  .get(getAllTours)
-  .post(createTour);
-
-tourRouter
-  .route('/:id') 
-  .get(getTour)
-  .patch(updateTour)
-  .delete(deleteTour);    
 
 userRouter
   .route('/')
