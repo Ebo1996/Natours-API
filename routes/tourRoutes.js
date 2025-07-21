@@ -1,6 +1,7 @@
 const express = require('express');
+const fs = require('fs');
 const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
+  fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`)
 );
 const getTour = (req, res) => {
   console.log(req.params);
