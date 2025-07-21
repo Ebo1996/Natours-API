@@ -160,12 +160,12 @@ tourRouter
   .delete(deleteTour);    
 
 userRouter
-  .route('/api/v1/users')
+  .route('/')
   .get(getAllUsers)
   .post(createUser);
 
 userRouter
-  .route('/api/v1/users/:id')
+  .route('/:id')
   .get(getUser)
   .patch(updateUser)
   .delete(deleteUser);
