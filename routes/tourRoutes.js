@@ -9,6 +9,6 @@ router
   .route('/:id')
   .get(getTour)
   .patch(updateTour)
-  .delete(deleteTour);    
+  .delete(deleteTour); 
 
-module.exports = router;
+module.exports = router;  
