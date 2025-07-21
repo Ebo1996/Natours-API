@@ -1,3 +1,4 @@
+const tourRouter = express.Router();
 tourRouter
   .route('/')
   .get(getAllTours)
