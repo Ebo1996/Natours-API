@@ -154,17 +154,17 @@ tourRouter
   .post(createTour);
 
 tourRouter
-  .route('/:id')
+  .route('/:id') 
   .get(getTour)
   .patch(updateTour)
   .delete(deleteTour);   
 
-app
+userRouter
   .route('/api/v1/users')
   .get(getAllUsers)
   .post(createUser);
 
-app
+userRouter
   .route('/api/v1/users/:id')
   .get(getUser)
   .patch(updateUser)
