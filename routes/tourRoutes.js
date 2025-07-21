@@ -1,5 +1,7 @@
 const express = require('express');
-// Get a tour
+const tours = JSON.parse(
+  fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
+);
 const getTour = (req, res) => {
   console.log(req.params);
   const id = req.params.id * 1;
