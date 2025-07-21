@@ -3,6 +3,8 @@ const fs = require('fs');
 const app = express();
 const morgan = require('morgan');
 
+const tourRouter = require('./routes/tourRoutes');
+const userRouter = require('./routes/userRoutes');
 // 1) MIDDLEWARE
 app.use(morgan('dev'));
 app.use(express.json());
