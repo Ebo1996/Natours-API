@@ -1,3 +1,4 @@
+@ -1, 38 + 1, 4 @@
 const express = require('express');
 const getAllUsers = (req, res) => {
   res.status(500).json({
@@ -36,15 +37,3 @@ const deleteUser = (req, res) => {
 const router = express.Router();
 app.use('/api/v1/tours', router);
 
-
-router
-  .route('/')
-  .get(getAllUsers)
-  .post(createUser);
-
-userRouter
-  .route('/:id')
-  .get(getUser)
-  .patch(updateUser)
-  .delete(deleteUser);
-module.exports = router;
