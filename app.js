@@ -157,7 +157,7 @@ tourRouter
   .route('/:id') 
   .get(getTour)
   .patch(updateTour)
-  .delete(deleteTour);   
+  .delete(deleteTour);    
 
 userRouter
   .route('/api/v1/users')
