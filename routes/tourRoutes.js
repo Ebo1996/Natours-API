@@ -1,11 +1,12 @@
-const tourRouter = express.Router();
-tourRouter
+const express = require('express');
+const router = express.Router();
+router
   .route('/')
   .get(getAllTours)
   .post(createTour);
 
-tourRouter
+router
   .route('/:id')
   .get(getTour)
   .patch(updateTour)
-  .delete(deleteTour);   
+  .delete(deleteTour);    
