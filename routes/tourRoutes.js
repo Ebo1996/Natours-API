@@ -3,6 +3,19 @@ const fs = require('fs');
 const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`)
 );
+getAllTours = (req, res) => {
+  console.log(req.requestTime);
+
+  res.status(200).json({
+    status: 'success',
+    requestedAt: req.requestTime,
+    results: tours.length,
+    data: {
+      tours
+    }
+  });
+};
+
 const getTour = (req, res) => {
   console.log(req.params);
   const id = req.params.id * 1;
