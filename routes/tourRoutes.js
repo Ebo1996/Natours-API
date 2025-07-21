@@ -10,3 +10,5 @@ router
   .get(getTour)
   .patch(updateTour)
   .delete(deleteTour);    
+
+module.exports = router;
