@@ -1,11 +1,12 @@
 const express = require('express');
 const fs = require('fs');
-const app = express();
 const morgan = require('morgan');
 
+const app = express();
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
-// 1) MIDDLEWARE
+
+// Middleware
 app.use(morgan('dev'));
 app.use(express.json());
 
@@ -19,24 +20,12 @@ app.use((req, res, next) => {
   next();
 });
 
+// Mount routers
+app.use('/api/v1/tours', tourRouter);
+app.use('/api/v1/users', userRouter);
 
-// 2) ROUTE HANDLER
-
-
-
-// User route handlers (placeholders)
-
-
-// 3) ROUTES
-
-
-
-// 4) START SERVER
+// Start server
 const port = 3000;
 app.listen(port, '127.0.0.1', () => {
   console.log(`Server running on http://127.0.0.1:${port}`);
 });
-
-
-
-
