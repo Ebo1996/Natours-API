@@ -1,7 +1,5 @@
 const express = require('express');
-
-const tours = JSON.parse(
-
+const tourController = require('./../controllers/tourcontroller');
 const router = express.Router();
 router
   .route('/')
@@ -14,4 +12,4 @@ router
   .patch(updateTour)
   .delete(deleteTour); 
 
-module.exports = router;  
+module.exports = router;   
