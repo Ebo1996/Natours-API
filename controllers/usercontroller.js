@@ -33,3 +33,4 @@ const deleteUser = (req, res) => {
   });
 };
 module.exports = { getAllUsers, createUser, getUser, updateUser, deleteUser };
+
